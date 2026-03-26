@@ -1,0 +1,25 @@
+import { create } from '@storybook/theming/create';
+
+export default create({
+  base: 'dark',
+  brandTitle: '⚡ Velox',
+  brandUrl: 'https://velox.kr',
+  brandTarget: '_self',
+  colorPrimary: '#6366F1',
+  colorSecondary: '#4F46E5',
+  appBg: '#0f0f0f',
+  appContentBg: '#1a1a1a',
+  appBorderColor: '#2a2a2a',
+  appBorderRadius: 8,
+  fontBase: "'Pretendard', sans-serif",
+  fontCode: "'JetBrains Mono', monospace",
+  textColor: '#fafafa',
+  textInverseColor: '#0f0f0f',
+  barTextColor: '#a3a3a3',
+  barSelectedColor: '#6366F1',
+  barBg: '#0f0f0f',
+  inputBg: '#1a1a1a',
+  inputBorder: '#2a2a2a',
+  inputTextColor: '#fafafa',
+  inputBorderRadius: 6,
+});
