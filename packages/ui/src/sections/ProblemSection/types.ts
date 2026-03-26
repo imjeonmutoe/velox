@@ -4,7 +4,7 @@ export interface ProblemItem {
 }
 
 export interface ProblemSectionProps {
-  title: string;
+  title?: string;
   subtitle?: string;
   problems: ProblemItem[];
   solutionText?: string;

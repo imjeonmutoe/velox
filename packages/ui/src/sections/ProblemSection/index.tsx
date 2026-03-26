@@ -1,75 +1,99 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { colors, typography, spacing } from '../../tokens';
 import type { ProblemSectionProps } from './types';
 
 const Wrapper = styled.section`
-  background: ${colors.neutral[50]};
-  padding: ${spacing[24]} ${spacing[6]};
+  background: #f8f8f8;
+  padding: 100px 24px;
 `;
 
 const Inner = styled.div`
-  max-width: 800px;
+  max-width: 640px;
   margin: 0 auto;
-  text-align: center;
+`;
+
+const EyebrowText = styled.p`
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aeaeb2;
+  margin-bottom: 20px;
 `;
 
 const Title = styled.h2`
-  font-size: ${typography.fontSize['3xl']};
-  font-weight: ${typography.fontWeight.bold};
-  color: ${colors.neutral[900]};
-  margin-bottom: ${spacing[4]};
+  font-size: clamp(28px, 6vw, 42px);
+  font-weight: 900;
+  color: #1a1a1a;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin-bottom: 56px;
+  word-break: keep-all;
 `;
 
-const Subtitle = styled.p`
-  font-size: ${typography.fontSize.lg};
-  color: ${colors.neutral[500]};
-  margin-bottom: ${spacing[12]};
-`;
-
-const ProblemList = styled.ul`
-  list-style: none;
-  padding: 0;
+const ProblemList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${spacing[4]};
-  margin-bottom: ${spacing[12]};
+  gap: 2px;
+  margin-bottom: 56px;
 `;
 
-const ProblemItem = styled(motion.li)`
+const ProblemItem = styled(motion.div)`
   display: flex;
-  align-items: center;
-  gap: ${spacing[4]};
-  background: white;
-  border: 1px solid ${colors.neutral[200]};
-  border-radius: ${spacing[3]};
-  padding: ${spacing[4]} ${spacing[6]};
-  font-size: ${typography.fontSize.lg};
-  color: ${colors.neutral[700]};
-  text-align: left;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid #ebebeb;
+
+  &:first-child {
+    border-top: 1px solid #ebebeb;
+  }
 `;
 
-const Icon = styled.span`
-  font-size: ${typography.fontSize['2xl']};
+const ProblemIcon = styled.div`
+  font-size: 28px;
   flex-shrink: 0;
+  width: 44px;
+  text-align: center;
+  margin-top: 2px;
+`;
+
+const ProblemText = styled.p`
+  font-size: 18px;
+  color: #3a3a3c;
+  line-height: 1.8;
+  word-break: keep-all;
+  font-weight: 400;
 `;
 
 const SolutionBox = styled(motion.div)`
-  background: ${colors.primary[500]};
-  color: white;
-  border-radius: ${spacing[3]};
-  padding: ${spacing[6]} ${spacing[8]};
-  font-size: ${typography.fontSize.xl};
-  font-weight: ${typography.fontWeight.bold};
+  background: #1a1a1a;
+  border-radius: 20px;
+  padding: 32px 28px;
+  text-align: center;
 `;
 
-export const ProblemSection: React.FC<ProblemSectionProps> = ({ title, subtitle, problems, solutionText }) => {
+const SolutionText = styled.p`
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.5;
+  word-break: keep-all;
+`;
+
+export const ProblemSection: React.FC<ProblemSectionProps> = ({
+  title = '이런 고민이 있으신가요?',
+  subtitle,
+  problems,
+  solutionText,
+}) => {
   return (
     <Wrapper>
       <Inner>
+        <EyebrowText>Common Problem</EyebrowText>
         <Title>{title}</Title>
-        {subtitle && <Subtitle>{subtitle}</Subtitle>}
+
         <ProblemList>
           {problems.map((p, i) => (
             <ProblemItem
@@ -77,16 +101,22 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ title, subtitle,
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
             >
-              <Icon>{p.icon}</Icon>
-              {p.text}
+              <ProblemIcon>{p.icon}</ProblemIcon>
+              <ProblemText>{p.text}</ProblemText>
             </ProblemItem>
           ))}
         </ProblemList>
+
         {solutionText && (
-          <SolutionBox initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            {solutionText}
+          <SolutionBox
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <SolutionText>{solutionText}</SolutionText>
           </SolutionBox>
         )}
       </Inner>

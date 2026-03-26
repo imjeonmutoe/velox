@@ -11,5 +11,8 @@
   "devDependencies": {
     "@velox/tsconfig": "workspace:*",
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.80.0"
   }
 }

@@ -4,7 +4,7 @@ import { TrustSection } from './index';
 const meta: Meta<typeof TrustSection> = {
   title: 'Sections/TrustSection',
   component: TrustSection,
-  parameters: { layout: 'fullscreen' },
+  parameters: { layout: 'fullscreen', viewport: { defaultViewport: 'mobile' } },
 };
 export default meta;
 type Story = StoryObj<typeof TrustSection>;
@@ -18,6 +18,6 @@ export const Default: Story = {
       { icon: '🔄', label: '재구매율', value: '78%' },
       { icon: '📦', label: '당일 배송', value: '95%' },
     ],
-    certifications: ['ISO 인증', 'GMP 인증', 'HACCP 인증', '식약처 허가'],
+    certifications: ['식약처 허가', 'GMP 인증', 'HACCP 인증', 'ISO 22000'],
   },
 };

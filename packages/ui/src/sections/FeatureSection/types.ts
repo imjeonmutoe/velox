@@ -1,11 +1,13 @@
 export interface Feature {
-  icon: string;
+  icon?: string;
   title: string;
   description: string;
+  image?: string;
 }
 
 export interface FeatureSectionProps {
-  title: string;
+  title?: string;
   subtitle?: string;
   features: Feature[];
+  accentColor?: string;
 }

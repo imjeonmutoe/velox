@@ -1,71 +1,81 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { colors, typography, spacing } from '../../tokens';
 import type { TrustSectionProps } from './types';
 
 const Wrapper = styled.section`
-  background: ${colors.neutral[900]};
-  color: white;
-  padding: ${spacing[16]} ${spacing[6]};
+  background: #f8f8f8;
+  padding: 80px 24px;
 `;
 
 const Inner = styled.div`
-  max-width: 1200px;
+  max-width: 860px;
   margin: 0 auto;
-  text-align: center;
 `;
 
 const Title = styled.h2`
-  font-size: ${typography.fontSize['2xl']};
-  font-weight: ${typography.fontWeight.bold};
-  margin-bottom: ${spacing[12]};
+  font-size: clamp(24px, 5vw, 36px);
+  font-weight: 900;
+  color: #1a1a1a;
+  text-align: center;
+  letter-spacing: -0.03em;
+  margin-bottom: 48px;
 `;
 
 const BadgeGrid = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: ${spacing[8]};
-  margin-bottom: ${spacing[10]};
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 40px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
-const Badge = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${spacing[2]};
+const BadgeCard = styled(motion.div)`
+  background: #ffffff;
+  border: 1px solid #ebebeb;
+  border-radius: 16px;
+  padding: 24px 16px;
+  text-align: center;
 `;
 
 const BadgeIcon = styled.div`
-  font-size: ${typography.fontSize['3xl']};
+  font-size: 32px;
+  margin-bottom: 12px;
 `;
 
 const BadgeValue = styled.div`
-  font-size: ${typography.fontSize['2xl']};
-  font-weight: ${typography.fontWeight.extrabold};
-  color: ${colors.primary[500]};
+  font-size: 28px;
+  font-weight: 900;
+  color: #1a1a1a;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 6px;
 `;
 
 const BadgeLabel = styled.div`
-  font-size: ${typography.fontSize.sm};
-  color: ${colors.neutral[400]};
+  font-size: 12px;
+  color: #aeaeb2;
+  font-weight: 500;
 `;
 
-const Certs = styled.div`
+const CertRow = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: ${spacing[3]};
+  gap: 8px;
 `;
 
 const CertTag = styled.span`
-  background: ${colors.neutral[800]};
-  border: 1px solid ${colors.neutral[700]};
-  color: ${colors.neutral[300]};
-  font-size: ${typography.fontSize.sm};
-  padding: ${spacing[1]} ${spacing[3]};
-  border-radius: 9999px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  color: #3a3a3c;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 999px;
 `;
 
 export const TrustSection: React.FC<TrustSectionProps> = ({ title, badges, certifications }) => {
@@ -75,25 +85,23 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ title, badges, certi
         {title && <Title>{title}</Title>}
         <BadgeGrid>
           {badges.map((b, i) => (
-            <Badge
+            <BadgeCard
               key={i}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.08 }}
             >
               <BadgeIcon>{b.icon}</BadgeIcon>
               <BadgeValue>{b.value}</BadgeValue>
               <BadgeLabel>{b.label}</BadgeLabel>
-            </Badge>
+            </BadgeCard>
           ))}
         </BadgeGrid>
         {certifications && (
-          <Certs>
-            {certifications.map((c, i) => (
-              <CertTag key={i}>{c}</CertTag>
-            ))}
-          </Certs>
+          <CertRow>
+            {certifications.map((c, i) => <CertTag key={i}>{c}</CertTag>)}
+          </CertRow>
         )}
       </Inner>
     </Wrapper>

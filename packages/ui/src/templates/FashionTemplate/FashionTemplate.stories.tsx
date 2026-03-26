@@ -9,13 +9,24 @@ const meta: Meta<typeof FashionTemplate> = {
 export default meta;
 type Story = StoryObj<typeof FashionTemplate>;
 
-export const Default: Story = {
+export const LinenOverfit: Story = {
+  name: '린넨 오버핏 셔츠',
   args: {
     brandName: 'VELOX FASHION',
     productName: '린넨 오버핏 셔츠',
     tagline: '여름의 시작을 가장 세련되게',
     price: 59000,
     originalPrice: 89000,
-    productImage: 'https://placehold.co/500x600/262626/ffffff?text=Fashion',
+  },
+};
+
+export const WideSlacks: Story = {
+  name: '와이드 슬랙스',
+  args: {
+    brandName: 'VELOX FASHION',
+    productName: '울 혼방 와이드 슬랙스',
+    tagline: '캐주얼과 포멀의 경계를 허물다',
+    price: 79000,
+    originalPrice: 119000,
   },
 };

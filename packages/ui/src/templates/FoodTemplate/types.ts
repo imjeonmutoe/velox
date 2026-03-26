@@ -3,6 +3,8 @@ import type { ProcessStep } from '../../sections/ProcessSection/types';
 
 /** FoodTemplate Props */
 export interface FoodTemplateProps {
+  /** 플랫폼 모드: smartstore (스마트스토어 최적화) | wadiz (와디즈/자사몰) */
+  mode?: 'smartstore' | 'wadiz';
   /** 제품명 */
   productName: string;
   /** 태그라인 */
@@ -21,17 +23,21 @@ export interface FoodTemplateProps {
   badgeIcon?: string;
   /** 카테고리 테마 컬러 */
   themeColor?: string;
+  /** 평균 별점 */
+  reviewScore?: number;
+  /** 리뷰 수 */
+  reviewCount?: number;
+  /** 재구매율 */
+  repurchaseRate?: number;
+  /** 재고 수량 */
+  stockCount?: number;
   /** 성분 목록 (IngredientSection) */
   ingredients?: IngredientItem[];
   /** 생산 과정 (ProcessSection) */
   processSteps?: ProcessStep[];
   /** 섹션 표시 여부 */
   sections?: {
-    showIngredient?: boolean;
-    showProcess?: boolean;
-    showTrust?: boolean;
     showReview?: boolean;
-    showBeforeAfter?: boolean;
   };
   /** 리뷰 목록 */
   reviews?: Array<{
@@ -40,6 +46,8 @@ export interface FoodTemplateProps {
     date: string;
     content: string;
     verified?: boolean;
+    option?: string;
+    image?: string;
   }>;
   /** CTA 하단 보조 문구 */
   ctaSubText?: string;

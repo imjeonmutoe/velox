@@ -1,7 +1,4 @@
-// Tokens
 export * from './tokens';
-
-// Sections
 export * from './sections/HeroSection';
 export * from './sections/ProblemSection';
 export * from './sections/FeatureSection';
@@ -11,8 +8,18 @@ export * from './sections/BeforeAfterSection';
 export * from './sections/CTASection';
 export * from './sections/IngredientSection';
 export * from './sections/ProcessSection';
-
-// Templates
+export * from './sections/FAQSection';
+export * from './sections/HowToSection';
+export * from './sections/HookSection';
+export * from './sections/ProductShowSection';
+export * from './sections/LifestyleSection';
+export * from './sections/CheckPointSection';
+export * from './sections/DeliverySection';
+export * from './sections/FeatureDetailSection';
+export * from './sections/CertificationSection';
+export * from './sections/BenefitBannerSection';
+export * from './sections/ReviewSummarySection';
+export * from './sections/FinalCTASection';
 export * from './templates/FoodTemplate';
 export * from './templates/FashionTemplate';
 export * from './templates/ElectronicsTemplate';

@@ -7,5 +7,8 @@ export interface CTASectionProps {
   note?: string;
   price?: number;
   originalPrice?: number;
-  urgencyText?: string;
+  stockCount?: number;
+  todayBenefit?: string;
+  guarantees?: string[];
+  category?: 'food' | 'fashion' | 'electronics';
 }

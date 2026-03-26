@@ -3,11 +3,14 @@ export interface Review {
   rating: number;
   date: string;
   content: string;
-  avatar?: string;
+  image?: string;
   verified?: boolean;
+  option?: string;
 }
 
 export interface ReviewSectionProps {
   title?: string;
+  averageRating?: number;
+  totalCount?: number;
   reviews: Review[];
 }
