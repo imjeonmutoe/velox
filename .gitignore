@@ -5,3 +5,6 @@ dist
 *.local
 .DS_Store
 storybook-static
+.idea
+build-storybook.log
+package-lock.json
